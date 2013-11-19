@@ -8,9 +8,9 @@ module.exports = (grunt)->
 
     options = @options {
       blog_path: 'blog/'
-      blog_name: "My Blog"
+      blog_name: "Blog"
       default_author: "Admin"
-      site_url: "http://www.example.com/"
+      site_url: ""
       rss: false
     }
 

@@ -25,62 +25,77 @@ In your project's Gruntfile, add a section named `ocublog` to the data object pa
 ```js
 grunt.initConfig({
   ocublog: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    task: {
+      options: {
+        // task-specific options go here
+      },
+      files: {
+        files to process go here
+      }
+    }
   },
 })
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+Most of the options here are only used for the RSS generator.
 
-A string value that is used to do something with whatever.
+#### options.rss
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+Type `Boolean` Default value `false`
 
-A string value that is used to do something else with whatever else.
+Build RSS feed for blog.
+
+#### options.blog_path
+
+Type `String` Default value `blog/`
+
+Relative path to blog index page.
+
+#### options.blog_name
+
+Type `String` Default value `Blog`
+
+Title of your blog.
+
+#### options.default_author
+
+Type `String` Default value `Admin`
+
+Author name used when not provided in file header.
+
+#### options.site_url
+
+Type `String` Default value ``
+
+Complete URL to site front page.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
   ocublog: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    dist: {
+      options: {
+        blog_path: 'blog/',
+        blog_name: "My Blog",
+        default_author: "Admin",
+        site_url: "http://www.example.com/",
+        rss: false
+      },
+      files: [{
+        expand: true,
+        cwd: 'blog/',
+        src: ['*.{md,html}'],
+        dest: 'build/blog/'
+      }]
+    }
+  }
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  ocublog: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
