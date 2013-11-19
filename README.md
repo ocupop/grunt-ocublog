@@ -30,7 +30,7 @@ grunt.initConfig({
         // task-specific options go here
       },
       files: {
-        files to process go here
+        // files to process go here
       }
     }
   },
