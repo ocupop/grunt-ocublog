@@ -43,7 +43,7 @@ module.exports = (grunt)->
       if options.rss then feed.item {
         title: header.title
         description: content
-        date: header.date
+        date: header.posted_at
         categories: header.tags
         url: options.rss.site_url + '#' + options.blog_path + header.slug
       }

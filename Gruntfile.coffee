@@ -10,7 +10,7 @@ module.exports = (grunt)->
           blog_name: "My Blog"
           default_author: "Admin"
           site_url: "http://www.example.com/"
-          rss: false
+          rss: true
         }
         files: [{
           expand: true
